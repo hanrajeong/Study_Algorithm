@@ -18,19 +18,22 @@ def solution(operations):
         if 'I' in a:
             num = int(a.replace('I ', ''))
             heapq.heappush(answer, num)
-            heapq.heappush(heap, -value)
+            heapq.heappush(answer2, -num)
+        #최소값 제거
         elif a == "D -1":
             try: 
                 heapq.heappop(answer)
+                heapq.heappop(answer2)
             except:
                 pass
+        #최대값 제거
         elif a == "D 1":
             try:
+                -heapq.heappop(answer)
                 -heapq.heappop(answer2)
-                
             except:
                 pass
         if len(answer) == 0 and len(operations) == 0:
             return [0,0]
     
-    return [-heapq.heappop(answer), heapq.heappop(answer)]
+    return [-heapq.heappop(answer2), heapq.heappop(answer)]
