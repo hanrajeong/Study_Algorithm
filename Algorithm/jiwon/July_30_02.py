@@ -10,6 +10,7 @@ def solution(operations):
     heapq.heapify(answer)
     heapq.heapify(answer2)
     
+<<<<<<< HEAD
     while len(operations) > 0:
         op = operations.pop(0)
         if op[0] == "I":
@@ -27,3 +28,30 @@ def solution(operations):
         return [0, 0]
     answer = [-heapq.heappop(answer2), heapq.heappop(answer)]
     return answer
+=======
+    while len(operations)>0:
+        a = operations.pop(0)
+        num = 0
+        if 'I' in a:
+            num = int(a.replace('I ', ''))
+            heapq.heappush(answer, num)
+            heapq.heappush(answer2, -num)
+        #최소값 제거
+        elif a == "D -1":
+            try: 
+                heapq.heappop(answer)
+                heapq.heappop(answer2)
+            except:
+                pass
+        #최대값 제거
+        elif a == "D 1":
+            try:
+                -heapq.heappop(answer)
+                -heapq.heappop(answer2)
+            except:
+                pass
+        if len(answer) == 0 and len(operations) == 0:
+            return [0,0]
+    
+    return [-heapq.heappop(answer2), heapq.heappop(answer)]
+>>>>>>> 778fc1fd32777a282d4fd4652c314c7ddd921b73
